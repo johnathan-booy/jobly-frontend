@@ -1,0 +1,18 @@
+.SearchForm {
+	width: 100%;
+}
+
+.SearchForm input {
+	margin: auto;
+	width: 50%;
+	min-width: 300px;
+	padding: 20px;
+	border-radius: 14px;
+	border: none;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	text-decoration: none;
+	display: block;
+	color: black;
+	font-size: 1.1rem;
+	font-family: "Inter", sans-serif;
+}
