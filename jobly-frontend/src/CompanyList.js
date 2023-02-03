@@ -3,6 +3,7 @@ import CompanyCard from "./CompanyCard";
 import JoblyApi from "./api";
 import SearchForm from "./SearchForm";
 import "./CompanyList.css";
+import LoadingSpinner from "./LoadingSpinner";
 
 function CompanyList() {
 	const [companies, setCompanies] = useState([]);
@@ -23,15 +24,21 @@ function CompanyList() {
 	return (
 		<div className="CompanyList">
 			<h1>Companies</h1>
-			<SearchForm searchByText={searchByText} />
-			{companies.map(({ handle, name, description }) => (
-				<CompanyCard
-					key={handle}
-					handle={handle}
-					name={name}
-					description={description}
-				/>
-			))}
+			{companies ? (
+				<>
+					<SearchForm searchByText={searchByText} />
+					{companies.map(({ handle, name, description }) => (
+						<CompanyCard
+							key={handle}
+							handle={handle}
+							name={name}
+							description={description}
+						/>
+					))}
+				</>
+			) : (
+				<LoadingSpinner />
+			)}
 		</div>
 	);
 }

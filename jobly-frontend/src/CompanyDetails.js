@@ -4,6 +4,7 @@ import JoblyApi from "./api";
 import "./CompanyDetails.css";
 import { formatSalaries } from "./helpers";
 import { useParams } from "react-router-dom";
+import LoadingSpinner from "./LoadingSpinner";
 
 function CompanyDetails() {
 	const { handle } = useParams();
@@ -38,7 +39,9 @@ function CompanyDetails() {
 						)
 					)}
 				</>
-			) : null}
+			) : (
+				<LoadingSpinner />
+			)}
 		</div>
 	);
 }

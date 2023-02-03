@@ -4,6 +4,7 @@ import JoblyApi from "./api";
 import SearchForm from "./SearchForm";
 import "./JobList.css";
 import { formatSalaries } from "./helpers";
+import LoadingSpinner from "./LoadingSpinner";
 
 function JobList() {
 	const [jobs, setJobs] = useState([]);
@@ -24,17 +25,25 @@ function JobList() {
 	return (
 		<div className="JobList">
 			<h1>Jobs</h1>
-			<SearchForm searchByText={searchByText} />
-			{jobs.map(({ id, title, salary, equity, companyName, companyHandle }) => (
-				<JobCard
-					key={id}
-					title={title}
-					salary={formatSalaries(salary)}
-					equity={equity}
-					companyName={companyName}
-					companyHandle={companyHandle}
-				/>
-			))}
+			{jobs ? (
+				<>
+					<SearchForm searchByText={searchByText} />
+					{jobs.map(
+						({ id, title, salary, equity, companyName, companyHandle }) => (
+							<JobCard
+								key={id}
+								title={title}
+								salary={formatSalaries(salary)}
+								equity={equity}
+								companyName={companyName}
+								companyHandle={companyHandle}
+							/>
+						)
+					)}
+				</>
+			) : (
+				<LoadingSpinner />
+			)}
 		</div>
 	);
 }
