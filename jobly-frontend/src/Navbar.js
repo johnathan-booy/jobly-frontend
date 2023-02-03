@@ -15,7 +15,9 @@ function Navbar() {
 	return (
 		<div className="Navbar">
 			<div className="Navbar-title">
-				<Link to="/">Jobly</Link>
+				<Link to="/">
+					<i class="fa-brands fa-connectdevelop"></i> Jobly
+				</Link>
 			</div>
 
 			<button className="Navbar-toggle" onClick={() => setOpen(!isOpen)}>
