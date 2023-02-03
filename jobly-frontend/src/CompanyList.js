@@ -6,24 +6,24 @@ import "./CompanyList.css";
 
 function CompanyList() {
 	const [companies, setCompanies] = useState([]);
-	const [name, setName] = useState(null);
+	const [text, setText] = useState(null);
 
 	useEffect(() => {
 		const getCompanies = async () => {
-			const companies = await JoblyApi.getCompanies(name);
+			const companies = await JoblyApi.getCompanies(text);
 			setCompanies(companies);
 		};
 		getCompanies();
-	}, [name]);
+	}, [text]);
 
-	const searchByName = (name) => {
-		setName(name ? name : null);
+	const searchByText = (text) => {
+		setText(text ? text : null);
 	};
 
 	return (
 		<div className="CompanyList">
 			<h1>Companies</h1>
-			<SearchForm searchByName={searchByName} />
+			<SearchForm searchByText={searchByText} />
 			{companies.map(({ handle, name, description }) => (
 				<CompanyCard
 					key={handle}

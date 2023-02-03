@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./SearchForm.css";
 
-function SearchForm({ searchByName }) {
+function SearchForm({ searchByText }) {
 	const [search, setSearch] = useState("");
 	const handleChange = (e) => {
 		setSearch(e.target.value);
 	};
 
 	useEffect(() => {
-		searchByName(search);
+		searchByText(search);
 	}, [search]);
 
 	return (
@@ -16,7 +16,7 @@ function SearchForm({ searchByName }) {
 			<input
 				id="name"
 				type="text"
-				placeholder="Search by name..."
+				placeholder="Search..."
 				value={search}
 				onChange={handleChange}
 			></input>

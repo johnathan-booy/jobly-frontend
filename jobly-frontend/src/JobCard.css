@@ -1,4 +1,4 @@
-.CompanyCard {
+.JobCard {
 	margin: 20px;
 	padding: 20px;
 	border-radius: 14px;
@@ -8,14 +8,20 @@
 	color: black;
 	background-color: white;
 }
-
-.CompanyCard-title {
+.JobCard-companyName {
+	font-size: 0.9em;
+}
+.JobCard-title {
 	font-family: "Montserrat", sans-serif;
 	font-weight: 700;
 	font-size: 1.3em;
 }
 
-.CompanyCard hr {
+.JobCard-description p {
+	margin: 0;
+}
+
+.JobCard hr {
 	border: 0;
 	height: 0;
 	border-top: 1px solid rgba(0, 0, 0, 0.1);

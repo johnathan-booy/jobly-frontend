@@ -16,7 +16,7 @@ function Navbar() {
 		<div className="Navbar">
 			<div className="Navbar-title">
 				<Link to="/">
-					<i class="fa-brands fa-connectdevelop"></i> Jobly
+					<i className="fa-brands fa-connectdevelop"></i> Jobly
 				</Link>
 			</div>
 

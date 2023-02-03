@@ -1,0 +1,14 @@
+.CompanyDetails h1 {
+	text-align: center;
+}
+
+.CompanyDetails-description {
+	margin: auto;
+	width: 50%;
+	min-width: 300px;
+	padding: 20px;
+	border-radius: 14px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	color: black;
+	background-color: white;
+}
