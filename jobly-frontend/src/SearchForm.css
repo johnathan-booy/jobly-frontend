@@ -16,3 +16,9 @@
 	font-size: 1.1rem;
 	font-family: "Inter", sans-serif;
 }
+
+.SearchForm input:focus {
+	outline: none; /* remove the default focus outline */
+	border-color: #5ee3cd; /* change the border color on focus */
+	box-shadow: 0 0 0 0.2rem #5ee3cd40; /* add a custom focus shadow */
+}

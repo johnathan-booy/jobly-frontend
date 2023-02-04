@@ -8,12 +8,22 @@
 	background-color: #525174;
 }
 
-.Navbar-title a {
+.Navbar-logo {
+	height: 40px;
+	width: 40px;
+}
+.Navbar-title {
+	margin-left: 10px;
+}
+.Navbar-company a {
 	font-family: "Montserrat", sans-serif;
 	font-weight: 700;
 	font-size: 1.5em;
 	text-decoration: none;
 	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .Navbar-links {

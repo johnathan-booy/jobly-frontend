@@ -1,0 +1,56 @@
+.Form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 80%;
+	min-width: 300px;
+	max-width: 800px;
+	margin: auto;
+	padding: 20px;
+	border-radius: 14px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	background-color: white;
+}
+
+.Form-group {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.Form-label {
+	font-weight: 600;
+	font-size: 1.1em;
+	margin-bottom: 5px;
+}
+
+.Form-input {
+	padding: 10px;
+	font-size: 1.2em;
+	border-radius: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.Form-input:focus {
+	outline: none; /* remove the default focus outline */
+	border-color: #5ee3cd; /* change the border color on focus */
+	box-shadow: 0 0 0 0.2rem #5ee3cd40; /* add a custom focus shadow */
+}
+
+.Form-submit {
+	background-color: #5ee3cd;
+	color: white;
+	padding: 10px 20px;
+	font-size: 1.2em;
+	border-radius: 5px;
+	border: none;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.Form-error {
+	color: red;
+	font-size: 0.9em;
+	margin-top: 2px;
+}

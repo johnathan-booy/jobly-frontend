@@ -4,6 +4,7 @@ import CompanyDetails from "./CompanyDetails";
 import CompanyList from "./CompanyList";
 import JobList from "./JobList";
 import LoadingSpinner from "./LoadingSpinner";
+import LoginForm from "./LoginForm";
 
 function Routes() {
 	return (
@@ -22,7 +23,7 @@ function Routes() {
 			</Route>
 			<Route exact path="/login">
 				<h1>Login</h1>
-				<LoadingSpinner />
+				<LoginForm />
 			</Route>
 			<Route exact path="/signup">
 				<h1>Signup</h1>
