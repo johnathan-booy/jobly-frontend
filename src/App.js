@@ -4,12 +4,14 @@ import JoblyApi from "./api";
 import "./App.css";
 import Navbar from "./Navbar";
 import Routes from "./Routes";
+import useFlashMessages from "./useFlashMessages";
 import useLocalStorage from "./useLocalStorage";
 import UserContext from "./UserContext";
 
 function App() {
 	const [currentUser, setCurrentUser] = useState(null);
 	const [token, setToken] = useLocalStorage("authToken", "");
+	const [flashMessages, addFlashMessage] = useFlashMessages(5000);
 	const history = useHistory();
 
 	const login = async (username, password) => {
@@ -17,14 +19,16 @@ function App() {
 			const { token } = await JoblyApi.authUser(username, password);
 			setToken(token);
 			setCurrentUser({ username: username });
+			addFlashMessage("success", `Welcome, ${username}!`);
 			history.push("/");
 		} catch (error) {
-			console.log(error);
+			addFlashMessage("danger", error);
 		}
 	};
 
 	const logout = () => {
 		setToken("");
+		addFlashMessage("success", `See you later!`);
 		history.push("/");
 	};
 
@@ -50,7 +54,13 @@ function App() {
 		<div className="App">
 			<UserContext.Provider value={{ currentUser, login, logout, signup }}>
 				<Navbar />
+
 				<div className="App-body">
+					{flashMessages.map((flash) => (
+						<div className={`App-FlashMessage ${flash.type}`}>
+							{flash.message}
+						</div>
+					))}
 					<Routes login />
 				</div>
 			</UserContext.Provider>

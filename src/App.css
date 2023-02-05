@@ -10,3 +10,25 @@
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
 	background-color: #f4f4f6;
 }
+
+.App-FlashMessage {
+	padding: 10px;
+	border-radius: 14px;
+	margin-bottom: 10px;
+	margin: auto;
+	width: 50%;
+	min-width: 300px;
+	text-align: center;
+	font-weight: 600;
+	font-size: 0.9em;
+}
+
+.App-FlashMessage.success {
+	box-shadow: #5ee3cd5a 0px 7px 29px 0px;
+	background-color: #5ee3cd87;
+}
+
+.App-FlashMessage.danger {
+	box-shadow: #ff4c4c5a 0px 7px 29px 0px;
+	background-color: #ff4c4c87;
+}
