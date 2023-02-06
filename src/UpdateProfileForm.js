@@ -1,43 +1,17 @@
 import React, { useContext } from "react";
-import * as Yup from "yup";
 import UserContext from "./UserContext";
 import GenericForm from "./GenericForm";
 import "./Form.css";
+import FormFields from "./FormFields";
 
 function UpdateProfileForm() {
 	const { updateProfile, deleteProfile, currentUser } = useContext(UserContext);
 
-	const fields = [
-		{
-			name: "firstName",
-			label: "First Name",
-			type: "text",
-			initialValue: currentUser.firstName,
-			validation: Yup.string()
-				.min(3, "First name must be at least 3 characters")
-				.max(30, "First name must be at most 30 characters")
-				.required("First name is required"),
-		},
-		{
-			name: "lastName",
-			label: "Last Name",
-			type: "text",
-			initialValue: currentUser.lastName,
-			validation: Yup.string()
-				.min(3, "Last name must be at least 3 characters")
-				.max(30, "Last name must be at most 30 characters")
-				.required("Last name is required"),
-		},
-		{
-			name: "email",
-			label: "Email",
-			type: "email",
-			initialValue: currentUser.email,
-			validation: Yup.string()
-				.email("Invalid email address")
-				.required("Email is required"),
-		},
-	];
+	const fields = FormFields.getFields({
+		firstName: currentUser.firstName,
+		lastName: currentUser.lastName,
+		email: currentUser.email,
+	});
 
 	const onSubmitUpdate = async (values) => {
 		const { firstName, lastName, email } = values;
