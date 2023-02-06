@@ -1,24 +1,30 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import JoblyApi from "./api";
 import "./App.css";
+import JoblyApi from "./api";
 import Navbar from "./Navbar";
 import Routes from "./Routes";
+import UserContext from "./UserContext";
 import useFlashMessages from "./useFlashMessages";
 import useLocalStorage from "./useLocalStorage";
-import UserContext from "./UserContext";
 
 function App() {
 	const [currentUser, setCurrentUser] = useState(null);
-	const [token, setToken] = useLocalStorage("authToken", "");
-	const [flashMessages, addFlashMessage] = useFlashMessages(5000);
+	const [storedToken, setStoredToken] = useLocalStorage("authToken", "");
+	const [storedUsername, setStoredUsername] = useLocalStorage("username", "");
+	const [flashMessages, addFlashMessage] = useFlashMessages(2000);
 	const history = useHistory();
+
+	const updateCredentials = (username = "", token = "") => {
+		JoblyApi.setToken(token);
+		setStoredToken(token);
+		setStoredUsername(username);
+	};
 
 	const login = async (username, password) => {
 		try {
 			const { token } = await JoblyApi.authUser(username, password);
-			setToken(token);
-			setCurrentUser({ username: username });
+			updateCredentials(username, token);
 			addFlashMessage("success", `Welcome, ${username}!`);
 			history.push("/");
 		} catch (error) {
@@ -26,42 +32,93 @@ function App() {
 		}
 	};
 
+	const signup = async (username, password, firstName, lastName, email) => {
+		try {
+			const { token } = await JoblyApi.registerUser(
+				username,
+				password,
+				firstName,
+				lastName,
+				email
+			);
+			updateCredentials(username, token);
+			addFlashMessage("success", `Welcome, ${username}!`);
+			history.push("/");
+		} catch (error) {
+			addFlashMessage("danger", error);
+		}
+	};
+
+	const updateProfile = async (username, firstName, lastName, email) => {
+		try {
+			const { user } = await JoblyApi.updateUser(
+				username,
+				firstName,
+				lastName,
+				email
+			);
+			setCurrentUser(user);
+			addFlashMessage("success", `Profile updated!`);
+		} catch (error) {
+			addFlashMessage("danger", error);
+		}
+	};
+
+	const deleteProfile = async (username) => {
+		try {
+			await JoblyApi.deleteUser(username);
+			updateCredentials();
+			setCurrentUser(null);
+			addFlashMessage("success", `Profile deleted! Hope to see you again.`);
+			history.push("/");
+		} catch (error) {
+			addFlashMessage("danger", error);
+		}
+	};
+
 	const logout = () => {
-		setToken("");
+		updateCredentials();
 		addFlashMessage("success", `See you later!`);
 		history.push("/");
 	};
 
-	const signup = () => {
-		setToken("");
-	};
-
 	useEffect(() => {
 		const getUser = async () => {
-			if (currentUser && token) {
-				const username = currentUser.username;
-				const user = await JoblyApi.getUser(username);
-				console.log(currentUser);
+			if (storedUsername && storedToken) {
+				JoblyApi.setToken(storedToken);
+				const user = await JoblyApi.getUser(storedUsername);
 				setCurrentUser(user);
 			} else {
 				setCurrentUser(null);
 			}
 		};
 		getUser();
-	}, [token]);
+	}, [storedUsername, storedToken]);
 
 	return (
 		<div className="App">
-			<UserContext.Provider value={{ currentUser, login, logout, signup }}>
+			<UserContext.Provider
+				value={{
+					currentUser,
+					login,
+					logout,
+					signup,
+					updateProfile,
+					deleteProfile,
+				}}
+			>
 				<Navbar />
 
 				<div className="App-body">
 					{flashMessages.map((flash) => (
-						<div className={`App-FlashMessage ${flash.type}`}>
+						<div
+							className={`App-FlashMessage ${flash.type}`}
+							key={flash.message}
+						>
 							{flash.message}
 						</div>
 					))}
-					<Routes login />
+					<Routes />
 				</div>
 			</UserContext.Provider>
 		</div>

@@ -2,23 +2,35 @@ import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
-/** API Class.
+/**
+ * JoblyApi Class - Ties together methods used to communicate with the API
  *
- * Static class tying together methods used to get/send to to the API.
- * There shouldn't be any frontend-specific stuff here, and there shouldn't
- * be any API-aware stuff elsewhere in the frontend.
+ * This class serves as the interface between the frontend and the backend API.
+ * It handles all the requests made to the API, including authentication,
+ * CRUD operations on users and companies, and retrieving information on users and companies.
  *
+ * Note: This class should only contain frontend-agnostic code and should not have any
+ * knowledge of frontend implementation details.
  */
-
 class JoblyApi {
-	// the token for interactive with the API will be stored here.
-	static token;
+	// Store the token for interaction with the API
+	static setToken(newToken) {
+		JoblyApi.token = newToken;
+	}
 
+	/**
+	 * Sends a request to the API
+	 *
+	 * @param {string} endpoint - The endpoint for the API request
+	 * @param {object} data - The data to be sent with the request
+	 * @param {string} method - The HTTP method for the request
+	 *
+	 * @returns {Promise} - Promise containing the response data
+	 *
+	 * @throws {Array} - Array of error messages
+	 */
 	static async request(endpoint, data = {}, method = "get") {
-		// console.debug("API Call:", endpoint, data, method);
-
-		//there are multiple ways to pass an authorization token, this is how you pass it in the header.
-		//this has been provided to show you another way to pass the token. you are only expected to read this code for this project.
+		console.debug("API Call:", endpoint, data, method);
 		const url = `${BASE_URL}/${endpoint}`;
 		const headers = { Authorization: `Bearer ${JoblyApi.token}` };
 		const params = method === "get" ? data : {};
@@ -38,6 +50,32 @@ class JoblyApi {
 
 	static async authUser(username, password) {
 		let res = await this.request("auth/token", { username, password }, "post");
+		return res;
+	}
+	/** Signup a user and return token */
+
+	static async registerUser(username, password, firstName, lastName, email) {
+		let res = await this.request(
+			"auth/register",
+			{ username, password, firstName, lastName, email },
+			"post"
+		);
+		return res;
+	}
+
+	/** Update a user and return user */
+	static async updateUser(username, firstName, lastName, email) {
+		let res = await this.request(
+			`users/${username}`,
+			{ firstName, lastName, email },
+			"patch"
+		);
+		return res;
+	}
+
+	/** Delete a user */
+	static async deleteUser(username) {
+		let res = await this.request(`users/${username}`, {}, "delete");
 		return res;
 	}
 
@@ -69,11 +107,5 @@ class JoblyApi {
 		return res.jobs;
 	}
 }
-
-// for now, put token ("testuser" / "password" on class)
-JoblyApi.token =
-	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-	"SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-	"FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
 export default JoblyApi;

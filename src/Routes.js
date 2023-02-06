@@ -5,6 +5,8 @@ import CompanyList from "./CompanyList";
 import JobList from "./JobList";
 import LoadingSpinner from "./LoadingSpinner";
 import LoginForm from "./LoginForm";
+import SignupForm from "./SignupForm";
+import UpdateProfileForm from "./UpdateProfileForm";
 
 function Routes() {
 	return (
@@ -22,16 +24,13 @@ function Routes() {
 				<JobList />
 			</Route>
 			<Route exact path="/login">
-				<h1>Login</h1>
 				<LoginForm />
 			</Route>
 			<Route exact path="/signup">
-				<h1>Signup</h1>
-				<LoadingSpinner />
+				<SignupForm />
 			</Route>
 			<Route exact path="/profile">
-				<h1>Edit profile</h1>
-				<LoadingSpinner />
+				<UpdateProfileForm />
 			</Route>
 			<Redirect to="/" />
 		</Switch>

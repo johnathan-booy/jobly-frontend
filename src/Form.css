@@ -1,3 +1,13 @@
+.Form-wrapper header {
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+.Form-wrapper header h1 {
+	margin-bottom: 0.1em;
+	font-size: 2em;
+}
+
 .Form {
 	display: flex;
 	flex-direction: column;
@@ -38,8 +48,7 @@
 	box-shadow: 0 0 0 0.2rem #5ee3cd40; /* add a custom focus shadow */
 }
 
-.Form-submit {
-	background-color: #5ee3cd;
+.Form-button {
 	color: white;
 	padding: 10px 20px;
 	font-size: 1.2em;
@@ -47,6 +56,13 @@
 	border: none;
 	margin-top: 10px;
 	cursor: pointer;
+}
+
+.Form-button.success {
+	background-color: #5ee3cd;
+}
+.Form-button.danger {
+	background-color: #ff4c4c;
 }
 
 .Form-error {
