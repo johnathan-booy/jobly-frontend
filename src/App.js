@@ -7,9 +7,12 @@ import Routes from "./Routes";
 import UserContext from "./UserContext";
 import useFlashMessages from "./useFlashMessages";
 import useLocalStorage from "./useLocalStorage";
+import { v4 as uuid } from "uuid";
+import LoadingSpinner from "./LoadingSpinner";
 
 function App() {
 	const [currentUser, setCurrentUser] = useState(null);
+	const [infoLoaded, setInfoLoaded] = useState(false);
 	const [storedToken, setStoredToken] = useLocalStorage("authToken", "");
 	const [storedUsername, setStoredUsername] = useLocalStorage("username", "");
 	const [flashMessages, addFlashMessage] = useFlashMessages(2000);
@@ -83,7 +86,7 @@ function App() {
 	};
 
 	useEffect(() => {
-		const getUser = async () => {
+		const loadUserInfo = async () => {
 			if (storedUsername && storedToken) {
 				JoblyApi.setToken(storedToken);
 				const user = await JoblyApi.getUser(storedUsername);
@@ -91,8 +94,9 @@ function App() {
 			} else {
 				setCurrentUser(null);
 			}
+			setInfoLoaded(true);
 		};
-		getUser();
+		loadUserInfo();
 	}, [storedUsername, storedToken]);
 
 	return (
@@ -109,17 +113,18 @@ function App() {
 			>
 				<Navbar />
 
-				<div className="App-body">
-					{flashMessages.map((flash) => (
-						<div
-							className={`App-FlashMessage ${flash.type}`}
-							key={flash.message}
-						>
-							{flash.message}
-						</div>
-					))}
-					<Routes />
-				</div>
+				{infoLoaded ? (
+					<div className="App-body">
+						{flashMessages.map((flash) => (
+							<div className={`App-FlashMessage ${flash.type}`} key={uuid()}>
+								{flash.message}
+							</div>
+						))}
+						<Routes addFlashMessage={addFlashMessage} />
+					</div>
+				) : (
+					<LoadingSpinner />
+				)}
 			</UserContext.Provider>
 		</div>
 	);

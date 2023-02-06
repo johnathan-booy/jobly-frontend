@@ -5,33 +5,34 @@ import CompanyList from "./CompanyList";
 import JobList from "./JobList";
 import LoadingSpinner from "./LoadingSpinner";
 import LoginForm from "./LoginForm";
+import PrivateRoute from "./PrivateRoute";
 import SignupForm from "./SignupForm";
 import UpdateProfileForm from "./UpdateProfileForm";
 
-function Routes() {
+function Routes({ addFlashMessage }) {
 	return (
 		<Switch>
 			<Route exact path="/">
 				<h1>Homepage</h1>
 			</Route>
-			<Route exact path="/companies">
+			<PrivateRoute exact path="/companies" addFlashMessage={addFlashMessage}>
 				<CompanyList />
-			</Route>
-			<Route path="/companies/:handle">
+			</PrivateRoute>
+			<PrivateRoute path="/companies/:handle" addFlashMessage={addFlashMessage}>
 				<CompanyDetails />
-			</Route>
-			<Route exact path="/jobs">
+			</PrivateRoute>
+			<PrivateRoute exact path="/jobs" addFlashMessage={addFlashMessage}>
 				<JobList />
-			</Route>
+			</PrivateRoute>
 			<Route exact path="/login">
 				<LoginForm />
 			</Route>
 			<Route exact path="/signup">
 				<SignupForm />
 			</Route>
-			<Route exact path="/profile">
+			<PrivateRoute exact path="/profile" addFlashMessage={addFlashMessage}>
 				<UpdateProfileForm />
-			</Route>
+			</PrivateRoute>
 			<Redirect to="/" />
 		</Switch>
 	);
