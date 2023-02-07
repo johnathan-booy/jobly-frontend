@@ -9,8 +9,8 @@ function LoginForm() {
 	const { login } = useContext(UserContext);
 
 	const fields = FormFields.getFields({
-		username: "testuser",
-		password: "password",
+		username: "",
+		password: "",
 	});
 
 	const onSubmit = async (values) => {
