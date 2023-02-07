@@ -1,14 +1,14 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import CompanyDetails from "./CompanyDetails";
-import CompanyList from "./CompanyList";
-import Homepage from "./Homepage";
-import JobList from "./JobList";
-import LoginForm from "./LoginForm";
+import CompanyDetails from "../companies/CompanyDetails";
+import CompanyList from "../companies/CompanyList";
+import Homepage from "../homepage/Homepage";
+import JobList from "../jobs/JobList";
+import LoginForm from "../forms/LoginForm";
 import PrivateRoute from "./PrivateRoute";
-import Section from "./Section";
-import SignupForm from "./SignupForm";
-import UpdateProfileForm from "./UpdateProfileForm";
+import Section from "../section/Section";
+import SignupForm from "../forms/SignupForm";
+import UpdateProfileForm from "../forms/UpdateProfileForm";
 
 function Routes({ addFlashMessage }) {
 	return (

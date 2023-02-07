@@ -1,5 +1,5 @@
 import React from "react";
-import FlashMessages from "./FlashMessages";
+import FlashMessages from "../common/FlashMessages";
 import "./Section.css";
 
 function Section({ children, type = "narrow" }) {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import JobCard from "./JobCard";
-import JoblyApi from "./api";
+import JobCard from "../jobs/JobCard";
+import JoblyApi from "../api/api";
 import "./CompanyDetails.css";
-import { formatSalaries } from "./helpers";
-import LoadingSpinner from "./LoadingSpinner";
+import { formatSalaries } from "../common/helpers";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 function CompanyDetails({ handle }) {
 	const [company, setCompany] = useState(null);

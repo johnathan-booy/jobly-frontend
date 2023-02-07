@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./App.css";
-import JoblyApi from "./api";
-import Navbar from "./Navbar";
-import Routes from "./Routes";
-import UserContext from "./UserContext";
-import useFlashMessages from "./useFlashMessages";
-import useLocalStorage from "./useLocalStorage";
-import LoadingSpinner from "./LoadingSpinner";
-import FlashContext from "./FlashContext";
-import Section from "./Section";
+import JoblyApi from "./api/api";
+import Navbar from "./navigation/Navbar";
+import Routes from "./navigation/Routes";
+import UserContext from "./auth/UserContext";
+import useFlashMessages from "./hooks/useFlashMessages";
+import useLocalStorage from "./hooks/useLocalStorage";
+import LoadingSpinner from "./common/LoadingSpinner";
+import FlashContext from "./common/FlashContext";
+import Section from "./section/Section";
+
+/**
+ * App is the main component that manages the state of the current user,
+ * flash messages, and storage of token and username using the `useState`,
+ * `useFlashMessages`, and `useLocalStorage` hooks.
+ *
+ * It also provides context for `UserContext` and `FlashContext` for their respective values and functions,
+ * such as login, signup, updateProfile, deleteProfile, and logout.
+ * The component also handles the rendering of the `Navbar` and `Routes` components.
+ */
 
 function App() {
 	const [currentUser, setCurrentUser] = useState(null);

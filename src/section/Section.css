@@ -1,5 +1,4 @@
 .Section {
-	height: auto;
 	min-height: calc(100vh - 75px);
 	background-color: #f4f4f6;
 	overflow: hidden;

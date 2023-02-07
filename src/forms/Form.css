@@ -48,23 +48,6 @@
 	box-shadow: 0 0 0 0.2rem #5ee3cd40; /* add a custom focus shadow */
 }
 
-.Form-button {
-	color: white;
-	padding: 10px 20px;
-	font-size: 1.2em;
-	border-radius: 5px;
-	border: none;
-	margin-top: 10px;
-	cursor: pointer;
-}
-
-.Form-button.success {
-	background-color: #5ee3cd;
-}
-.Form-button.danger {
-	background-color: #ff4c4c;
-}
-
 .Form-error {
 	color: red;
 	font-size: 0.9em;

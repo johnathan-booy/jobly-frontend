@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Redirect, Route } from "react-router-dom";
-import UserContext from "./UserContext";
+import UserContext from "../auth/UserContext";
 
 function PrivateRoute({ exact, to, children, addFlashMessage }) {
 	const { currentUser } = useContext(UserContext);

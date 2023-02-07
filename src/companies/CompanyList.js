@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import CompanyCard from "./CompanyCard";
-import JoblyApi from "./api";
-import SearchForm from "./SearchForm";
+import JoblyApi from "../api/api";
+import SearchForm from "../common/SearchForm";
 import "./CompanyList.css";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 function CompanyList() {
 	const [companies, setCompanies] = useState([]);

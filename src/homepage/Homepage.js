@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Homepage.css";
-import Logo from "./Logo";
-import UserContext from "./UserContext";
+import Logo from "../images/Logo";
+import UserContext from "../auth/UserContext";
 
 function Homepage() {
 	const { currentUser } = useContext(UserContext);

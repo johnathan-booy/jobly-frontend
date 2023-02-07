@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import "./Navbar.css";
-import UserContext from "./UserContext";
-import Logo from "./Logo";
+import UserContext from "../auth/UserContext";
+import Logo from "../images/Logo";
 
 function Navbar() {
 	const { logout, currentUser } = useContext(UserContext);

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import UserContext from "./UserContext";
+import UserContext from "../auth/UserContext";
 import GenericForm from "./GenericForm";
 import "./Form.css";
 import FormFields from "./FormFields";
@@ -36,7 +36,7 @@ function UpdateProfileForm() {
 				<p>
 					<i>Goodbye forever...or until you get lonely and come back.</i>
 				</p>
-				<button className="Form-button danger" type="submit">
+				<button className="App-button danger" type="submit">
 					Delete
 				</button>
 			</form>
