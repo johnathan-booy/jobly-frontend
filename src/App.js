@@ -22,12 +22,23 @@ import Section from "./section/Section";
  */
 
 function App() {
+	// Initialize state for current user
 	const [currentUser, setCurrentUser] = useState(null);
+
+	// Initialize state for user info load status
 	const [infoLoaded, setInfoLoaded] = useState(false);
+
+	// Initialize state for the ids of job applications
 	const [applicationIds, setApplicationIds] = useState(new Set());
+
+	// Get stored token and username from local storage
 	const [storedToken, setStoredToken] = useLocalStorage("authToken", "");
 	const [storedUsername, setStoredUsername] = useLocalStorage("username", "");
+
+	// Get flash messages from `useFlashMessages` hook
 	const [flashMessages, addFlashMessage] = useFlashMessages(3000);
+
+	// Get the `history` object from `useHistory` hook
 	const history = useHistory();
 
 	useEffect(() => {
