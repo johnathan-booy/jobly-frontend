@@ -24,10 +24,26 @@ import Section from "./section/Section";
 function App() {
 	const [currentUser, setCurrentUser] = useState(null);
 	const [infoLoaded, setInfoLoaded] = useState(false);
+	const [applicationIds, setApplicationIds] = useState(new Set());
 	const [storedToken, setStoredToken] = useLocalStorage("authToken", "");
 	const [storedUsername, setStoredUsername] = useLocalStorage("username", "");
 	const [flashMessages, addFlashMessage] = useFlashMessages(3000);
 	const history = useHistory();
+
+	useEffect(() => {
+		const loadUserInfo = async () => {
+			if (storedUsername && storedToken) {
+				JoblyApi.setToken(storedToken);
+				const user = await JoblyApi.getUser(storedUsername);
+				setCurrentUser(user);
+				setApplicationIds(new Set(user.applications));
+			} else {
+				setCurrentUser(null);
+			}
+			setInfoLoaded(true);
+		};
+		loadUserInfo();
+	}, [storedUsername, storedToken]);
 
 	const updateCredentials = (username = "", token = "") => {
 		JoblyApi.setToken(token);
@@ -96,19 +112,15 @@ function App() {
 		history.push("/");
 	};
 
-	useEffect(() => {
-		const loadUserInfo = async () => {
-			if (storedUsername && storedToken) {
-				JoblyApi.setToken(storedToken);
-				const user = await JoblyApi.getUser(storedUsername);
-				setCurrentUser(user);
-			} else {
-				setCurrentUser(null);
-			}
-			setInfoLoaded(true);
-		};
-		loadUserInfo();
-	}, [storedUsername, storedToken]);
+	const hasAppliedToJob = (id) => {
+		return applicationIds.has(id);
+	};
+
+	const applyToJob = async (id) => {
+		if (hasAppliedToJob(id)) return;
+		await JoblyApi.applyToJob(currentUser.username, id);
+		setApplicationIds(new Set([...applicationIds, id]));
+	};
 
 	return (
 		<div className="App">
@@ -120,6 +132,8 @@ function App() {
 					signup,
 					updateProfile,
 					deleteProfile,
+					applyToJob,
+					hasAppliedToJob,
 				}}
 			>
 				<Navbar />

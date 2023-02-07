@@ -32,6 +32,7 @@ function JobList() {
 						({ id, title, salary, equity, companyName, companyHandle }) => (
 							<JobCard
 								key={id}
+								id={id}
 								title={title}
 								salary={formatSalaries(salary)}
 								equity={equity}

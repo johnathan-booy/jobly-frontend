@@ -100,11 +100,18 @@ class JoblyApi {
 		return res.company;
 	}
 
-	/** Get details on all companies */
+	/** Get details on all jobs */
 
 	static async getJobs(title = "") {
 		let res = await this.request(`jobs`, { title: title });
 		return res.jobs;
+	}
+
+	/** Apply to a job */
+
+	static async applyToJob(username, jobId) {
+		let res = await this.request(`users/${username}/jobs/${jobId}`, {}, "post");
+		return res.applied;
 	}
 }
 

@@ -19,7 +19,14 @@
 	font-size: 1.3em;
 }
 
+.JobCard-body {
+	display: flex;
+	justify-content: space-between;
+}
 .JobCard-description p {
+	margin: 0;
+}
+.JobCard-body .JobCard-apply {
 	margin: 0;
 }
 
