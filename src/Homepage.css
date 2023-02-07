@@ -1,0 +1,31 @@
+.Homepage {
+	text-align: center;
+	color: #fff;
+	padding: 80px;
+	border-radius: 14px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	text-decoration: none;
+	display: block;
+	background-color: rgba(255, 255, 255, 0.117);
+}
+.Homepage h1 {
+	font-size: 3em;
+	text-shadow: 3px 3px #000;
+	margin: 0;
+}
+.Homepage h3 {
+	font-size: 1.5em;
+	font-weight: 200;
+	text-shadow: 1px 1px #000;
+	margin: 0;
+}
+
+.Homepage-logo {
+	width: 100px;
+	filter: drop-shadow(2px 2px 5px #000);
+}
+
+.Homepage-links a {
+	display: inline-block;
+	margin-bottom: 0;
+}

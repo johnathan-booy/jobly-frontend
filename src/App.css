@@ -2,33 +2,36 @@
 	width: 100%;
 }
 
-.App-body {
-	max-width: 1140px;
-	min-height: calc(100vh - 75px);
-	margin: auto;
-	padding: 30px;
-	box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
-	background-color: #f4f4f6;
+.full-width {
+	max-width: none;
 }
 
-.App-FlashMessage {
-	padding: 10px;
-	border-radius: 14px;
-	margin-bottom: 10px;
-	margin: auto;
-	width: 50%;
-	min-width: 300px;
-	text-align: center;
-	font-weight: 600;
-	font-size: 0.9em;
+.App-button {
+	color: white;
+	text-decoration: none;
+	padding: 10px 20px;
+	font-size: 1.2em;
+	border-radius: 5px;
+	border: none;
+	margin: 10px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
 }
 
-.App-FlashMessage.success {
-	box-shadow: #5ee3cd5a 0px 7px 29px 0px;
-	background-color: #5ee3cd87;
+.App-button:hover {
+	transform: scale(1.02);
+	box-shadow: 1px 1px 3px #555;
 }
 
-.App-FlashMessage.danger {
-	box-shadow: #ff4c4c5a 0px 7px 29px 0px;
-	background-color: #ff4c4c87;
+.App-button:active {
+	transform: scale(0.98);
+	box-shadow: none;
+}
+
+.App-button.success {
+	background-color: #5ee3cd;
+}
+
+.App-button.danger {
+	background-color: #ff4c4c;
 }

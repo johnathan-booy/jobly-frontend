@@ -1,0 +1,43 @@
+.Section {
+	height: auto;
+	min-height: calc(100vh - 75px);
+	background-color: #f4f4f6;
+	overflow: hidden;
+}
+
+.Section-narrow {
+	padding: 30px;
+	max-width: 1140px;
+	margin: auto;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+}
+
+.Section-full {
+	width: 100vw;
+	background: radial-gradient(circle at 30% 10%, #4e4c7e, #cce8e5);
+	background-size: 200% 200%;
+	animation: swirl 8s ease-in-out infinite;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+@keyframes swirl {
+	0% {
+		background-position: 0% 50%, 0% 0%;
+	}
+	25% {
+		background-position: 100% 50%, 0% 0%;
+	}
+	50% {
+		background-position: 100% 50%, 100% 100%;
+	}
+	75% {
+		background-position: 0% 50%, 100% 100%;
+	}
+	100% {
+		background-position: 0% 50%, 0% 0%;
+	}
+}

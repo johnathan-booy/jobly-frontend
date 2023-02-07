@@ -2,10 +2,11 @@ import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import CompanyDetails from "./CompanyDetails";
 import CompanyList from "./CompanyList";
+import Homepage from "./Homepage";
 import JobList from "./JobList";
-import LoadingSpinner from "./LoadingSpinner";
 import LoginForm from "./LoginForm";
 import PrivateRoute from "./PrivateRoute";
+import Section from "./Section";
 import SignupForm from "./SignupForm";
 import UpdateProfileForm from "./UpdateProfileForm";
 
@@ -13,25 +14,45 @@ function Routes({ addFlashMessage }) {
 	return (
 		<Switch>
 			<Route exact path="/">
-				<h1>Homepage</h1>
+				<Section type="full">
+					<Homepage />
+				</Section>
 			</Route>
 			<PrivateRoute exact path="/companies" addFlashMessage={addFlashMessage}>
-				<CompanyList />
+				<Section>
+					<CompanyList />
+				</Section>
 			</PrivateRoute>
 			<PrivateRoute path="/companies/:handle" addFlashMessage={addFlashMessage}>
-				<CompanyDetails />
+				<Section>
+					<Route
+						path="/companies/:handle"
+						render={({ match }) => (
+							<CompanyDetails handle={match.params.handle} />
+						)}
+					/>
+				</Section>
 			</PrivateRoute>
+
 			<PrivateRoute exact path="/jobs" addFlashMessage={addFlashMessage}>
-				<JobList />
+				<Section>
+					<JobList />
+				</Section>
 			</PrivateRoute>
 			<Route exact path="/login">
-				<LoginForm />
+				<Section>
+					<LoginForm />
+				</Section>
 			</Route>
 			<Route exact path="/signup">
-				<SignupForm />
+				<Section>
+					<SignupForm />
+				</Section>
 			</Route>
 			<PrivateRoute exact path="/profile" addFlashMessage={addFlashMessage}>
-				<UpdateProfileForm />
+				<Section>
+					<UpdateProfileForm />
+				</Section>
 			</PrivateRoute>
 			<Redirect to="/" />
 		</Switch>

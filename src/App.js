@@ -7,15 +7,16 @@ import Routes from "./Routes";
 import UserContext from "./UserContext";
 import useFlashMessages from "./useFlashMessages";
 import useLocalStorage from "./useLocalStorage";
-import { v4 as uuid } from "uuid";
 import LoadingSpinner from "./LoadingSpinner";
+import FlashContext from "./FlashContext";
+import Section from "./Section";
 
 function App() {
 	const [currentUser, setCurrentUser] = useState(null);
 	const [infoLoaded, setInfoLoaded] = useState(false);
 	const [storedToken, setStoredToken] = useLocalStorage("authToken", "");
 	const [storedUsername, setStoredUsername] = useLocalStorage("username", "");
-	const [flashMessages, addFlashMessage] = useFlashMessages(2000);
+	const [flashMessages, addFlashMessage] = useFlashMessages(3000);
 	const history = useHistory();
 
 	const updateCredentials = (username = "", token = "") => {
@@ -112,19 +113,15 @@ function App() {
 				}}
 			>
 				<Navbar />
-
-				{infoLoaded ? (
-					<div className="App-body">
-						{flashMessages.map((flash) => (
-							<div className={`App-FlashMessage ${flash.type}`} key={uuid()}>
-								{flash.message}
-							</div>
-						))}
-						<Routes addFlashMessage={addFlashMessage} />
-					</div>
-				) : (
-					<LoadingSpinner />
-				)}
+				<FlashContext.Provider value={{ flashMessages, addFlashMessage }}>
+					{infoLoaded ? (
+						<Routes />
+					) : (
+						<Section>
+							<LoadingSpinner />
+						</Section>
+					)}
+				</FlashContext.Provider>
 			</UserContext.Provider>
 		</div>
 	);

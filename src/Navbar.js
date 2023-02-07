@@ -48,7 +48,7 @@ function Navbar() {
 							<span>Login</span>
 						</NavLink>
 						<NavLink to="/signup">
-							<span>Signup</span>
+							<span>Sign Up</span>
 						</NavLink>
 					</>
 				)}
