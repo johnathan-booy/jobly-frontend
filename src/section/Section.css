@@ -11,6 +11,12 @@
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
 }
 
+@media only screen and (max-width: 767px) {
+	.Section-narrow {
+		padding: 10px;
+	}
+}
+
 .Section-full {
 	width: 100vw;
 	background: radial-gradient(circle at 30% 10%, #4e4c7e, #cce8e5);

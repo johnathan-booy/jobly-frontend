@@ -8,11 +8,13 @@
 	display: block;
 	background-color: rgba(255, 255, 255, 0.117);
 }
+
 .Homepage h1 {
 	font-size: 3em;
 	text-shadow: 3px 3px #000;
 	margin: 0;
 }
+
 .Homepage h3 {
 	font-size: 1.5em;
 	font-weight: 200;
@@ -22,10 +24,31 @@
 
 .Homepage-logo {
 	width: 100px;
+	position: relative;
 	filter: drop-shadow(2px 2px 5px #000);
+	z-index: 1;
 }
 
 .Homepage-links a {
 	display: inline-block;
 	margin-bottom: 0;
+}
+
+@media only screen and (max-width: 767px) {
+	.Homepage {
+		padding: 40px;
+		margin: 0 10px 0 10px;
+	}
+
+	.Homepage h1 {
+		font-size: 2em;
+	}
+
+	.Homepage h3 {
+		font-size: 1em;
+	}
+
+	.Homepage-logo {
+		width: 80px;
+	}
 }
