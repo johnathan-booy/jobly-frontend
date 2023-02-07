@@ -1,6 +1,32 @@
-# Getting Started with Create React App
+# Jobly - The One-Stop Job Shop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Check out the deployed app!](http://jobly.johnathan-booy.surge.sh/)
+
+Jobly is a web-based job listing and job application platform. It provides a simple and user-friendly interface for job seekers to browse and apply to available job listings, and for companies to post and manage their job listings. The platform is built using modern web technologies, such as React, Node.js, and PostgreSQL, to provide a smooth and responsive user experience.
+
+## Backend
+
+The backend API for Jobly is a powerful and efficient solution, built using Express.js and deployed on Heroku. It provides the backbone for all company, job, and user-related requests, including authentication.
+
+[View on Github](https://github.com/johnathan-booy/jobly-backens)
+
+
+## Custom Hooks
+
+Jobly uses two custom hooks, `useFlashMessages` and `useLocalStorage`. 
+
+`useFlashMessages` is a hook that returns the current flash messages and a function to add new flash messages with a specified timeout. 
+
+`useLocalStorage` is a hook that allows for storage and retrieval of values from local storage in a React component. It is utilized to keep users signed in and authenticated.
+
+## Forms and validation
+
+The `<GenericForm`> component and FormFields class in Jobly utilize the power of Yup and Formik to create clean, dynamic forms with built-in validation.
+
+By using these tools, Jobly reduces code duplication and streamlines the form creation process, resulting in a more efficient and scalable application.
+
+With Yup and Formik, Jobly is able to ensure data entered into forms is accurate and complete, improving the user experience and reducing the chance of errors
+
 
 ## Available Scripts
 
@@ -28,43 +54,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
